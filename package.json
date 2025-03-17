@@ -1,5 +1,5 @@
 {
-  "name": "signature_pad_smooth",
+  "name": "@insolvemaciek/signature_pad_smooth",
   "description": "Library for drawing smooth signatures. Based on szimek/signature_pad",
   "version": "5.0.6",
   "homepage": "https://github.com/InsolveMaciek/signature_pad_smooth",
@@ -7,6 +7,9 @@
     "name": "Maciej Rusek",
     "email": "maciej.rusek@teleinwestor.com",
     "url": "https://github.com/InsolveMaciek"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   },
   "license": "MIT",
   "source": "src/signature_pad.ts",
@@ -25,7 +28,7 @@
     "emit-types": "yarn run del dist/types && yarn run tsc src/signature_pad.ts --lib DOM,ES2015 --declaration --declarationDir dist/types --emitDeclarationOnly",
     "format": "prettier --write {src,tests}/**/*.{js,ts}",
     "lint": "eslint {src,tests}/**/*.ts",
-    "prepublishOnly": "yarn run build",
+    "prepublishOnlynpm publish": "yarn run build",
     "serve": "serve -l 9000 docs",
     "start": "yarn run build && yarn run serve",
     "test": "jest --coverage",
@@ -33,7 +36,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/InsolveMaciek/signature_pad_smooth.git"
+    "url": "git+https://github.com/InsolveMaciek/signature_pad_smooth.git"
   },
   "files": [
     "src",
