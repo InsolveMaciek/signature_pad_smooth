@@ -9,7 +9,7 @@
     "url": "https://github.com/InsolveMaciek"
   },
   "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
+    "registry": "https://registry.npmjs.org"
   },
   "license": "MIT",
   "source": "src/signature_pad.ts",
