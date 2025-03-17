@@ -11,6 +11,80 @@ export class Bezier {
     return new Bezier(points[1], c2, c3, points[2], widths.start, widths.end);
   }
 
+ public static bezierCurve(
+      points: BasicPoint[],
+      t: number
+  ) {
+      const n = points.length - 1;
+      const newPoints = points.map(p => ({ x: p.x, y: p.y, pressure: p.pressure, time: p.time }));
+
+      for (let r = 1; r <= n; r++) {
+          for (let i = 0; i <= n - r; i++) {
+              newPoints[i].x = (1 - t) * newPoints[i].x + t * newPoints[i + 1].x;
+              newPoints[i].y = (1 - t) * newPoints[i].y + t * newPoints[i + 1].y;
+          }
+      }
+      return newPoints[0];
+  }
+
+  public static generateBezierPoints(
+      points: BasicPoint[],
+      steps: number = 100,
+  ) {
+      const curvePoints = [];
+      for (let t = 0; t <= 1; t += 1 / steps) {
+          curvePoints.push(this.bezierCurve(points, t));
+      }
+      return curvePoints;
+  }
+
+  public static generateUniformBezierPoints(
+      points: BasicPoint[],
+      numPoints: number = 100,
+  ) {
+      const densePoints = this.generateBezierPoints(points, 1000);
+
+      let totalLength = 0;
+      for (let i = 1; i < densePoints.length; i++) {
+          const dx = densePoints[i].x - densePoints[i - 1].x;
+          const dy = densePoints[i].y - densePoints[i - 1].y;
+          totalLength += Math.sqrt(dx * dx + dy * dy);
+      }
+
+      const uniformPoints = [];
+      let currentLength = 0;
+      const targetLength = totalLength / (numPoints - 1);
+      uniformPoints.push(densePoints[0]);
+
+      for (let i = 1; i < densePoints.length && uniformPoints.length < numPoints; i++) {
+          const dx = densePoints[i].x - densePoints[i - 1].x;
+          const dy = densePoints[i].y - densePoints[i - 1].y;
+          const segmentLength = Math.sqrt(dx * dx + dy * dy);
+          currentLength += segmentLength;
+
+          if (currentLength >= targetLength) {
+              uniformPoints.push(densePoints[i]);
+              currentLength = 0;
+          }
+      }
+
+      return uniformPoints;
+  }
+
+  public static generateBezierCurveBySegments(
+      points: BasicPoint[],
+      segmentSize: number = 4,
+      steps: number = 100,
+  ) {
+      const curvePoints = [];
+      for (let i = 0; i < points.length - 1; i += segmentSize - 1) {
+          const segmentPoints = points.slice(i, i + segmentSize);
+          const segmentCurve = this.generateUniformBezierPoints(segmentPoints, steps);
+          curvePoints.push(...segmentCurve);
+      }
+      return curvePoints;
+  }
+
   private static calculateControlPoints(
     s1: BasicPoint,
     s2: BasicPoint,
@@ -44,6 +118,10 @@ export class Bezier {
       c2: new Point(m2.x + tx, m2.y + ty),
     };
   }
+
+
+
+
 
   constructor(
     public startPoint: Point,
