@@ -1,12 +1,12 @@
 {
-  "name": "signature_pad",
-  "description": "Library for drawing smooth signatures.",
+  "name": "signature_pad_smooth",
+  "description": "Library for drawing smooth signatures. Based on szimek/signature_pad",
   "version": "5.0.6",
-  "homepage": "https://github.com/szimek/signature_pad",
+  "homepage": "https://github.com/InsolveMaciek/signature_pad_smooth",
   "author": {
-    "name": "Szymon Nowak",
-    "email": "szimek@gmail.com",
-    "url": "https://github.com/szimek"
+    "name": "Maciej Rusek",
+    "email": "maciej.rusek@teleinwestor.com",
+    "url": "https://github.com/InsolveMaciek"
   },
   "license": "MIT",
   "source": "src/signature_pad.ts",
@@ -33,7 +33,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/szimek/signature_pad.git"
+    "url": "https://github.com/InsolveMaciek/signature_pad_smooth.git"
   },
   "files": [
     "src",
