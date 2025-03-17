@@ -1,7 +1,7 @@
 {
   "name": "@insolvemaciek/signature_pad_smooth",
   "description": "Library for drawing smooth signatures. Based on szimek/signature_pad",
-  "version": "5.0.6",
+  "version": "5.0.8",
   "homepage": "https://github.com/InsolveMaciek/signature_pad_smooth",
   "author": {
     "name": "Maciej Rusek",
