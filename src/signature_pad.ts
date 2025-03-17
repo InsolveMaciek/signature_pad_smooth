@@ -527,12 +527,19 @@ export default class SignaturePad extends SignatureEventTarget {
     this._drawingStroke = false;
     this.dispatchEvent(new CustomEvent('endStroke', { detail: event }));
 
+    
+    // if dot skip
+    if (this._data[this._data.length-1].points.length === 1) {
+      return;
+    }
+
     // Length of the array
     const dataLength = this._data.length;
     
     const curveData = this._data[dataLength-1].points;
+
     // const uniformPoints = Bezier.generateUniformBezierPoints(curveData, 100);
-    const curvePoints = Bezier.generateBezierCurveBySegments(curveData, 10, 100);
+    const curvePoints = Bezier.generateBezierCurveBySegments(curveData, 10, 50);
 
     // Replace points and redraw
     this._data[dataLength-1].points = curvePoints;

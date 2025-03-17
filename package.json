@@ -1,5 +1,5 @@
 {
-  "name": "@insolvemaciek/signature_pad_smooth",
+  "name": "signature_pad_smooth",
   "description": "Library for drawing smooth signatures. Based on szimek/signature_pad",
   "version": "5.0.8",
   "homepage": "https://github.com/InsolveMaciek/signature_pad_smooth",
@@ -9,7 +9,7 @@
     "url": "https://github.com/InsolveMaciek"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "registry": "https://registry.npmjs.org/"
   },
   "license": "MIT",
   "source": "src/signature_pad.ts",

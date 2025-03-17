@@ -40,7 +40,7 @@ export class Bezier {
 
   public static generateUniformBezierPoints(
       points: BasicPoint[],
-      numPoints: number = 100,
+      numPoints: number = 500,
   ) {
       const densePoints = this.generateBezierPoints(points, 1000);
 
@@ -73,8 +73,8 @@ export class Bezier {
 
   public static generateBezierCurveBySegments(
       points: BasicPoint[],
-      segmentSize: number = 4,
-      steps: number = 100,
+      segmentSize: number = 10,
+      steps: number = 500,
   ) {
       const curvePoints = [];
       for (let i = 0; i < points.length - 1; i += segmentSize - 1) {
